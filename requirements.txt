@@ -1,0 +1,8 @@
+# ComfyUI-CacheDiT Requirements
+# ==============================
+
+# Core dependency: cache-dit library (v1.2.0+)
+cache-dit>=1.2.0
+
+# Note: torch and ComfyUI are assumed to be pre-installed
+# as this is a ComfyUI custom node package.
