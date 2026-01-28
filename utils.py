@@ -452,7 +452,10 @@ def build_block_adapter(
         
         pattern = get_forward_pattern(forward_pattern)
         
+        # For ComfyUI custom models (non-diffusers), pass pipe=None explicitly
+        # to prevent auto_block_adapter from wrapping in FakeDiffusionPipeline
         adapter = BlockAdapter(
+            pipe=None,
             transformer=transformer,
             forward_pattern=pattern,
             auto=auto_detect,
