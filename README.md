@@ -25,15 +25,6 @@ ComfyUI-CacheDiT brings **1.4-1.6x speedup** to DiT (Diffusion Transformer) mode
 | **Z-Image-Turbo** | 9 | 1.5x | ✅ |
 | **Qwen-Image-2512** | 50 | 1.4-1.6x | ✅ |
 
-### 🧪 Experimental Support
-
-Models with built-in presets (auto-configured):
-- Flux
-- HunyuanVideo
-- LTX-2
-- Wan 2.2
-- Custom DiT models
-
 ## 📦 Installation
 
 ### Prerequisites
@@ -81,38 +72,9 @@ The node automatically detects your model architecture:
 
 - **QwenImageTransformer** → Qwen-Image preset
 - **NextDiT / Lumina** → Z-Image preset  
-- **Flux** → Flux preset
-- **HunyuanVideo** → HunyuanVideo preset
-- **LTX** → LTX-2 preset
-- **Unknown** → Custom preset (safe defaults)
 
 No manual configuration needed!
 
-## Performance Dashboard
-
-After generation, you'll see a detailed performance report:
-
-```
-╔═══════════════════════════════════════════════════════════════╗
-║          CacheDiT Performance Dashboard                       ║
-╠═══════════════════════════════════════════════════════════════╣
-║  Model: Qwen-Image                                            ║
-║  Strategy: Lightweight Cache (fallback mode)                  ║
-╠───────────────────────────────────────────────────────────────╣
-║  📊 Performance Metrics                                       ║
-║───────────────────────────────────────────────────────────────║
-║  Total Steps:              50                                 ║
-║  Computed Steps:           34                                 ║
-║  Cached Steps:             16                                 ║
-║  Cache Hit Rate:           32.0%                              ║
-║  Estimated Speedup:        1.47x                              ║
-╠───────────────────────────────────────────────────────────────╣
-║  ⚙️  Configuration                                            ║
-║  Warmup:                   3 steps                            ║
-║  Skip Interval:            2-3 steps                          ║
-║  Memory Mode:              GPU (detach-only, no clone)        ║
-╚═══════════════════════════════════════════════════════════════╝
-```
 
 ## How It Works
 
@@ -130,7 +92,6 @@ For ComfyUI models (Qwen-Image, Z-Image, etc.), the lightweight cache automatica
 **Model-Specific Optimization**:
 - **Z-Image/Turbo**: Aggressive caching (warmup=3, skip_interval=2)
 - **Qwen-Image**: Balanced approach (warmup=3, skip_interval=2-3)
-- **Video models**: Conservative (warmup=8, skip_interval=5)
 
 **Caching Logic**:
 ```python
@@ -177,10 +138,7 @@ Other DiT models should work with auto-detection, but may need manual preset sel
 **A:** Manually select your model from the `model_type` dropdown:
 - Z-Image
 - Qwen-Image
-- Flux
-- HunyuanVideo
-- LTX-2
-- Custom (safe defaults)
+
 
 ### Q: Performance Dashboard shows 0% cache hit?
 
