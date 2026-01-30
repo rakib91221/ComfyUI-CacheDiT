@@ -13,7 +13,7 @@
 ---
 
 <a name="english"></a>
-Unique cloners in last 14 days
+
 ## Overview
 
 ComfyUI-CacheDiT brings **1.4-1.6x speedup** to DiT (Diffusion Transformer) models through intelligent residual caching, with **zero configuration required**.
