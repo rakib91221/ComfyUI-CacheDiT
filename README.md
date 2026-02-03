@@ -9,6 +9,12 @@
 [![ComfyUI](https://img.shields.io/badge/ComfyUI-Compatible-green)](https://github.com/comfyanonymous/ComfyUI)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
+**Quality Comparison (Z-Image, 50 steps)**
+
+| w/o Cache-DiT Acceleration | w/ Cache-DiT Acceleration |
+|:---:|:---:|
+|<img src="./assets/without_cachedit.png" width=200px>| <img src="./assets/with_cachedit.png" width=200px>
+
 </div>
 
 ---
@@ -27,7 +33,7 @@ Inspired by [**llm-scaler**](https://github.com/intel/llm-scaler), a high-perfor
 
 | Model | Steps | Speedup | Status | Warmup | Skip_interval |
 |-------|-------|---------|--------|---------|--------|
-| **Z-Image** | 50 | 1.3x | ✅ | 12 | 5 |
+| **Z-Image** | 50 | 1.3x | ✅ | 10 | 5 |
 | **Z-Image-Turbo** | 9 | 1.5x | ✅ | 3 | 2 |
 | **Qwen-Image-2512** | 50 | 1.4-1.6x | ✅ | 5 | 3 |
 | **LTX-2 T2V** | 20 | 2.0x | ✅ | 6 | 4 |
