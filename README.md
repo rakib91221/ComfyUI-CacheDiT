@@ -19,7 +19,7 @@
 
 ComfyUI-CacheDiT brings **1.4-1.6x speedup** to DiT (Diffusion Transformer) models through intelligent caching, with **zero configuration required**.
 
-Inspired by [**Intel llm-scaler**](https://github.com/intel/llm-scaler), a high-performance LLM serving framework on Intel XPU.
+Inspired by [**llm-scaler**](https://github.com/intel/llm-scaler), a high-performance LLM serving framework on Intel XPU.
 
 ### Tested & Verified Models
 
