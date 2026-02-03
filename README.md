@@ -7,7 +7,7 @@
 
 [![cache-dit](https://img.shields.io/badge/cache--dit-v1.2.0+-blue)](https://github.com/vipshop/cache-dit)
 [![ComfyUI](https://img.shields.io/badge/ComfyUI-Compatible-green)](https://github.com/comfyanonymous/ComfyUI)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
+[![License](https://img.shields.io/badge/License-Apache%202.0-yellow)](LICENSE)
 
 **Quality Comparison (Z-Image, 50 steps)**
 
@@ -115,17 +115,6 @@ ComfyUI-CacheDiT uses a **two-tier acceleration approach**:
 
 For ComfyUI models (Qwen-Image, Z-Image, etc.), the lightweight cache automatically activates because cache-dit's BlockAdapter cannot track non-standard model architectures.
 
-### Lightweight Cache Strategy
-
-**Model-Specific Optimization**:
-- **Z-Image/Turbo**: Aggressive caching (warmup=3, skip_interval=2)
-- **Qwen-Image**: Balanced approach (warmup=3, skip_interval=2-3)
-- **LTX-2 (T2V/I2V)**: Conservative for temporal consistency (warmup=6, skip_interval=4)
-- **WAN2.2 14B (T2V/I2V)**: Optimized for MoE architecture (warmup=4, skip_interval=2)
-  - Uses dedicated `WanCacheOptimizer` node
-  - Supports High-Noise + Low-Noise expert models
-  - Per-transformer cache isolation (multi-instance safe)
-  - Memory-efficient: detach-only caching prevents VAE OOM
 
 **Caching Logic**:
 ```python
@@ -138,11 +127,6 @@ else:
     # Reuse cached result
     result = cache
 ```
-
-**Memory Optimization**:
-- Uses `.detach()` only (no `.clone()`)
-- Saves 50% memory for cached tensors
-- Prevents VAE OOM on long sequences
 
 ## Credits
 
@@ -158,6 +142,12 @@ Built for [**ComfyUI**](https://github.com/comfyanonymous/ComfyUI) - the powerfu
 
 Other DiT models should work with auto-detection, but may need manual preset selection.
 
+### Q: Does it support distilled low step models?
+
+**A:** Currently, only **Z-Image-Turbo (9 steps)** has been tested and verified. Other low-step distilled models require further validation. 
+
+For extremely low step counts (< 6 steps), the warmup overhead significantly reduces the benefit - sacrificing quality for minimal speed gains is generally not worthwhile in such cases.
+
 ### Q: Performance Dashboard shows 0% cache hit?
 
 **A:** This usually means:
@@ -168,9 +158,6 @@ Other DiT models should work with auto-detection, but may need manual preset sel
 ### Q: Does this affect image quality?
 
 **A:** Properly configured (default settings), quality impact is minimal:
-- Cache is only used when residuals are similar between steps
-- Warmup phase (3 steps) establishes stable baseline
-- Conservative skip intervals prevent artifacts
 
 ---
 
