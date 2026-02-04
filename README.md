@@ -9,16 +9,16 @@
 [![ComfyUI](https://img.shields.io/badge/ComfyUI-Compatible-green)](https://github.com/comfyanonymous/ComfyUI)
 [![License](https://img.shields.io/badge/License-Apache%202.0-yellow)](LICENSE)
 
-**Quality Comparison (Z-Image, 50 steps)**
+**Quality Comparison (Z-Image-Base, 50 steps)**
 
 | w/o Cache-DiT Acceleration | w/ Cache-DiT Acceleration |
 |:---:|:---:|
-|<img src="./assets/without_cachedit.png" width=250px>| <img src="./assets/with_cachedit.png" width=250px>
+|<img src="./assets/without_cachedit.png" width=180px>| <img src="./assets/with_cachedit.png" width=180px>
 
 **Guidance Video (Click below)**
 
 <a href="https://www.youtube.com/watch?v=nbhxqRu21js">
-  <img src="https://img.youtube.com/vi/nbhxqRu21js/maxresdefault.jpg" alt="ComfyUI-CacheDiT Tutorial" width="600">
+  <img src="https://img.youtube.com/vi/nbhxqRu21js/maxresdefault.jpg" alt="ComfyUI-CacheDiT Tutorial" width="400">
 </a>
 
 *Thanks to Benji for the excellent tutorial!*
