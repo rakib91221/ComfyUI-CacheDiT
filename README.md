@@ -39,15 +39,15 @@ Inspired by [**llm-scaler**](https://github.com/intel/llm-scaler), a high-perfor
 
 <div align="center">
 
-| Model | Steps | Speedup | Status | Warmup | Skip_interval |
-|-------|-------|---------|--------|---------|--------|
-| **Z-Image** | 50 | 1.3x | ✅ | 10 | 5 |
-| **Z-Image-Turbo** | 9 | 1.5x | ✅ | 3 | 2 |
-| **Qwen-Image-2512** | 50 | 1.4-1.6x | ✅ | 5 | 3 |
-| **LTX-2 T2V** | 20 | 2.0x | ✅ | 6 | 4 |
-| **LTX-2 I2V** | 20 | 2.0x | ✅ | 6 | 4 |
-| **WAN2.2 14B T2V** | 20 | 1.67x | ✅ | 4 | 2 |
-| **WAN2.2 14B I2V** | 20 | 1.67x | ✅ | 4 | 2 |
+| Model | Steps | Speedup | Warmup | Skip_interval |
+|-------|-------|---------|---------|--------|
+| **Z-Image** | 50 | 1.3x | 10 | 5 |
+| **Z-Image-Turbo** | 9 | 1.5x | 3 | 2 |
+| **Qwen-Image-2512** | 50 | 1.4-1.6x | 5 | 3 |
+| **LTX-2 T2V** | 20 | 2.0x | 6 | 4 |
+| **LTX-2 I2V** | 20 | 2.0x | 6 | 4 |
+| **WAN2.2 14B T2V** | 20 | 1.67x | 4 | 2 |
+| **WAN2.2 14B I2V** | 20 | 1.67x | 4 | 2 |
 
 </div>
 
@@ -155,6 +155,10 @@ Other DiT models should work with auto-detection, but may need manual preset sel
 **A:** Currently, only **Z-Image-Turbo (9 steps)** has been tested and verified. Other low-step distilled models require further validation. 
 
 For extremely low step counts (< 6 steps), the warmup overhead significantly reduces the benefit - sacrificing quality for minimal speed gains is generally not worthwhile in such cases.
+
+### Q: How can I disable the node without restarting ComfyUI?
+
+**A:** Simply set enable=False in the node and run it once. This will cleanly remove the CacheDiT optimization from your model without requiring a restart.
 
 ### Q: Performance Dashboard shows 0% cache hit?
 
